@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        /* Popup styles */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        .popup-content h2 {
+            margin-bottom: 20px;
+        }
+        .popup-content input,
+        .popup-content textarea,
+        .popup-content button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .popup-content button {
+            background: #FD791E;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .popup-content button:hover {
+            background: #e56700;
+        }
+        .popup-content .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .popup-content p {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./access/logo.png" alt="logo">
+            </div>
+            <ul>
+                <li><a href="index.html" class="link">Home</a></li>
+                <li><a href="about.html" class="link">About</a></li>
+                <li><a href="services.html" class="link">Services</a></li>
+                <li><a href="rates.html" class="link">Rates</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="pricing-intro">
+        <div class="container">
+            <h1>Our Pricing Plans</h1>
+            <p>Choose the plan that best fits your travel needs. We offer flexible pricing options to make your journey affordable and enjoyable.</p>
+        </div>
+    </section>
+
+    <section class="pricing-plans">
+        <div class="container">
+            <div class="plan">
+                <i class="ri-plane-line"></i>
+                <h2>Basic Plan</h2>
+                <p class="price">$299 <span>per person</span></p>
+                <ul>
+                    <li>Flight Booking</li>
+                    <li>Hotel Accommodation</li>
+                    <li>Basic Support</li>
+                </ul>
+                <button onclick="showPopup()">Get Started</button>
+            </div>
+            <div class="plan featured">
+                <i class="ri-star-line"></i>
+                <h2>Premium Plan</h2>
+                <p class="price">$599 <span>per person</span></p>
+                <ul>
+                    <li>Flight Booking</li>
+                    <li>Hotel Accommodation</li>
+                    <li>Car Rental</li>
+                    <li>Travel Insurance</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <button onclick="showPopup()">Get Started</button>
+            </div>
+            <div class="plan">
+                <i class="ri-globe-line"></i>
+                <h2>Luxury Plan</h2>
+                <p class="price">$999 <span>per person</span></p>
+                <ul>
+                    <li>Flight Booking</li>
+                    <li>Luxury Hotel Accommodation</li>
+                    <li>Car Rental</li>
+                    <li>Travel Insurance</li>
+                    <li>Private Tours</li>
+                    <li>Concierge Service</li>
+                </ul>
+                <button onclick="showPopup()">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./access/logo.png" alt="logo">
+            </div>
+            <div class="footer-about">
+                <h4 style="color: #FD791E">About Us</h4>
+                <p>We are your go-to travel agency for unforgettable experiences around the globe. Let us take you to the most amazing destinations with our unbeatable packages.</p>
+            </div>
+            <div class="footer-links">
+                <h4 style="color: #FD791E">Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="rates.html">Rates</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 style="color: #FD791E">Contact Us</h4>
+                <p><i class="ri-map-pin-line"></i> 123 Travel St, Adventure City, World</p>
+                <p><i class="ri-phone-line"></i> +123 456 7890</p>
+                <p><i class="ri-mail-line"></i> info@travelwebsite.com</p>
+            </div>
+            <div class="footer-social">
+                <h4 style="color: #FD791E">Follow Us</h4>
+                <a href="#"><i class="ri-facebook-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-twitter-fill"></i></a>
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Travel Website. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Popup Form -->
+    <div class="popup" id="quotePopup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h2>Request a Quote</h2>
+            <p>Our agent will contact you as soon as he gets the request.</p>
+            <form id="quoteForm">
+                <input type="email" placeholder="Your Email" required>
+                <input type="tel" placeholder="Your Phone Number" required>
+                <textarea placeholder="Special Requests or Additional Information" rows="4"></textarea>
+                <button type="submit">Request a Quote</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('quotePopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('quotePopup').style.display = 'none';
+        }
+
+        document.getElementById('quoteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Handle form submission logic here
+            alert('Quote request submitted!');
+            closePopup();
+        });
+    </script>
+</body>
+</html>
